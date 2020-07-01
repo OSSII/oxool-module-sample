@@ -1,0 +1,77 @@
+%define modules_dir /usr/lib64/oxool
+%define modules_data_dir /var/lib/oxool
+%define modules_conf_dir /etc/oxool/conf.d
+%define loroot /opt/oxoffice
+
+Name:           @PACKAGE_NAME@
+Version:        @PACKAGE_VERSION@
+Release:        @LOOLWSD_VERSION_DIST@%{?dist}
+Vendor:         %{vendor}
+Summary:        OxOffice Online Module sample
+License:        MPL
+Obsoletes:	oxoolwsd
+Source0:        @PACKAGE_NAME@-%{version}.tar.gz
+BuildRequires:  poco-devel >= 1.7.5 oxool-devel >= 3.2.0
+Requires: oxool >= 3.2.0
+
+%description
+
+
+%prep
+%setup -q -n %{name}-%{version}
+
+%build
+
+./autogen.sh
+./configure
+
+make %{?_smp_mflags}
+
+%check
+
+%install
+
+#module
+mkdir -p %{buildroot}/%{modules_data_dir}/sample/
+mkdir -p %{buildroot}/%{modules_data_dir}/sample/oxoffice_oxt/
+mkdir -p %{buildroot}/%{modules_data_dir}/sample/oxooldocs/
+mkdir -p %{buildroot}/%{modules_data_dir}/sample/html/
+mkdir -p %{buildroot}/%{modules_data_dir}/sample/html/js
+mkdir -p %{buildroot}/%{modules_data_dir}/sample/html/css
+mkdir -p %{buildroot}/%{modules_conf_dir}/sample/
+mkdir -p %{buildroot}/%{modules_dir}
+%__install src/.libs/libsample.so.0.0.0 %{buildroot}/%{modules_dir}/libsample.so
+%__install runTimeData/sample.sqlite %{buildroot}/%{modules_data_dir}/sample/sample.sqlite
+%__install sample.xml %{buildroot}/%{modules_conf_dir}/sample/sample.xml
+%__install html/*.html %{buildroot}/%{modules_data_dir}/sample/html/
+%__install html/*.txt %{buildroot}/%{modules_data_dir}/sample/html/
+%__install html/js/*.js %{buildroot}/%{modules_data_dir}/sample/html/js
+%__install html/css/*.css %{buildroot}/%{modules_data_dir}/sample/html/css
+%__install oxoffice_oxt/sample.oxt %{buildroot}/%{modules_data_dir}/sample/oxoffice_oxt/sample.oxt
+
+%pre
+
+%{loroot}/program/unopkg remove sample.oxt --shared | true
+
+%post
+
+touch /var/log/sample.log && chown lool:lool /var/log/sample.log
+
+%{loroot}/program/unopkg add %{modules_data_dir}/sample/oxoffice_oxt/sample.oxt --shared | true
+
+%preun
+
+%postun
+
+
+%files
+%dir %attr(777, lool, lool) %{modules_data_dir}/sample/
+%dir %attr(777, lool, lool) %{modules_data_dir}/sample/oxooldocs
+%dir %attr(777, lool, lool) %{modules_data_dir}/sample/html
+%dir %attr(777, lool, lool) %{modules_data_dir}/sample/oxoffice_oxt
+%{modules_dir}/libsample.so
+%config(noreplace) %attr(600, lool, lool) %{modules_data_dir}/sample/sample.sqlite
+%config(noreplace) %attr(600, lool, lool) %{modules_conf_dir}/sample/sample.xml
+%{modules_data_dir}/sample/html/*
+%{modules_data_dir}/sample/oxoffice_oxt/sample.oxt
+%changelog

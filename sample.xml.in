@@ -1,0 +1,5 @@
+<config>
+    <logging>
+        <log_file type="string">@LOG_FILE@</log_file>
+    </logging>
+</config>
