@@ -1,8 +1,7 @@
 AC_INIT([oxool-module-sample], [1.0.0], [tommy.wu@ossii.com.tw])
-AM_INIT_AUTOMAKE([foreign])
-AM_INIT_AUTOMAKE([subdir-objects  -Wno-portability])
-AC_PROG_CC
 LT_INIT
+AM_INIT_AUTOMAKE([foreign])
+AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_CC
 AC_CONFIG_MACRO_DIR([m4])
@@ -34,7 +33,7 @@ AS_IF([test "$enable_debug" = yes -a -n "$with_poco_libs"],
       [POCO_DEBUG_SUFFIX=d],
       [POCO_DEBUG_SUFFIX=])
 
-LIBS="-lpam -lcap -lpng -ldl -lpcre -lsqlite3 -l:libossiiProduct.a"
+LIBS="-lpam -lcap -lpng -ldl -lpcre -lsqlite3"
 LIBS="$LIBS -lPocoNet${POCO_DEBUG_SUFFIX} -lPocoNetSSL${POCO_DEBUG_SUFFIX} -lPocoUtil${POCO_DEBUG_SUFFIX} -lPocoJSON${POCO_DEBUG_SUFFIX} -lPocoXML${POCO_DEBUG_SUFFIX} -lPocoFoundation${POCO_DEBUG_SUFFIX} -lPocoCrypto${POCO_DEBUG_SUFFIX} -lPocoData${POCO_DEBUG_SUFFIX} -lPocoDataSQLite${POCO_DEBUG_SUFFIX} -lPocoZip${POCO_DEBUG_SUFFIX}"
 
 # Logging

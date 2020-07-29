@@ -221,10 +221,12 @@ std::string sample::doSample(const std::string filename, std::string msg)
     std::cout << "load document OK\n";
     lodoc->registerCallback(ViewCallback, this);
 
+    /*
     std::string command;
     command = "macro:///Sample.TextEdit.insertText(\"" + msg + "\")";
     lodoc->postUnoCommand(command.c_str(), nullptr, true);
-    /* Using UnoCommand also can do the insertText
+    Using UnoCommand also can do the insertText
+    */
     std::string json = R"MULTILINE(
         {
             "Text":
@@ -237,7 +239,7 @@ std::string sample::doSample(const std::string filename, std::string msg)
     std::string args_str = Poco::format(json, msg);
 
     lodoc->postUnoCommand(".uno:InsertText", args_str.c_str(), true);
-    */
+    
     std::string format = "odt";
     if (!lodoc->saveAs(outfile.c_str(), format.c_str(), nullptr))
     {

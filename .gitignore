@@ -47,6 +47,8 @@ loolwsd.log
 *.log.*.gz
 *.lo
 *.la
+COPYING
+INSTALL
 
 
 
