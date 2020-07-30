@@ -49,7 +49,12 @@ loolwsd.log
 *.la
 COPYING
 INSTALL
-
+debian/.debhelper/
+debian/files
+debian/oxool-module-sample.debhelper.log
+debian/oxool-module-sample.substvars
+debian/oxool-module-sample/
+debian/tmp/
 
 
 
