@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    configure)
+	touch /var/log/sample.log && chown lool:lool /var/log/sample.log
+	/opt/oxoffice/program/unopkg add /var/lib/oxool/sample/oxoffice_oxt/sample.oxt --shared | true
+	;;
+
+esac
+
+#DEBHELPER#

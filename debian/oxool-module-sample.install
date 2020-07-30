@@ -1,0 +1,4 @@
+#!/usr/bin/dh-exec
+html/* var/lib/oxool/sample/html
+sample.xml /etc/oxool/conf.d/sample/
+src/.libs/libsample.so.0.0.0 => usr/lib64/oxool/libsample.so
