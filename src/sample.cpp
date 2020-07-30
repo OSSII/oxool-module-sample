@@ -158,7 +158,7 @@ void sample::ViewCallback(const int type,
     }
 }
 
-/// 轉檔：轉成圖片
+/// 實作文件操作
 std::string sample::doSample(const std::string filename, std::string msg)
 {
     Poco::Path pdfdir(filename);
