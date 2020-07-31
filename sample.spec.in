@@ -11,8 +11,8 @@ Summary:        OxOffice Online Module sample
 License:        MPL
 Obsoletes:	oxoolwsd
 Source0:        @PACKAGE_NAME@-%{version}.tar.gz
-BuildRequires:  poco-devel >= 1.7.5 oxool-devel >= 3.2.0
-Requires: oxool >= 3.2.0
+BuildRequires:  poco-devel >= 1.7.5 oxool-devel >= 3.2.8
+Requires: oxool >= 3.2.8
 
 %description
 
@@ -34,7 +34,6 @@ make %{?_smp_mflags}
 #module
 mkdir -p %{buildroot}/%{modules_data_dir}/sample/
 mkdir -p %{buildroot}/%{modules_data_dir}/sample/oxoffice_oxt/
-mkdir -p %{buildroot}/%{modules_data_dir}/sample/oxooldocs/
 mkdir -p %{buildroot}/%{modules_data_dir}/sample/html/
 mkdir -p %{buildroot}/%{modules_data_dir}/sample/html/js
 mkdir -p %{buildroot}/%{modules_data_dir}/sample/html/css
@@ -66,7 +65,6 @@ touch /var/log/sample.log && chown lool:lool /var/log/sample.log
 
 %files
 %dir %attr(777, lool, lool) %{modules_data_dir}/sample/
-%dir %attr(777, lool, lool) %{modules_data_dir}/sample/oxooldocs
 %dir %attr(777, lool, lool) %{modules_data_dir}/sample/html
 %dir %attr(777, lool, lool) %{modules_data_dir}/sample/oxoffice_oxt
 %{modules_dir}/libsample.so
