@@ -11,8 +11,8 @@ Summary:        OxOffice Online Module sample
 License:        MPL
 Obsoletes:	oxoolwsd
 Source0:        @PACKAGE_NAME@-%{version}.tar.gz
-BuildRequires:  poco-devel >= 1.7.5 oxool-devel >= 3.2.8
-Requires: oxool >= 3.2.8
+BuildRequires:  poco-devel >= 1.7.5 oxool-devel >= 3.2.9
+Requires: oxool >= 3.2.9
 
 %description
 
