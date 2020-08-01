@@ -5,7 +5,7 @@
 
 Name:           @PACKAGE_NAME@
 Version:        @PACKAGE_VERSION@
-Release:        @LOOLWSD_VERSION_DIST@%{?dist}
+Release:        @OXOOLMODULE_VERSION_DIST@%{?dist}
 Vendor:         %{vendor}
 Summary:        OxOffice Online Module sample
 License:        MPL
