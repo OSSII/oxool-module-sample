@@ -397,6 +397,15 @@ void sample::handleRequest(std::weak_ptr<StreamSocket> _socket,
             quickHttpRes(_socket, HTTPResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
 
+        try
+        {
+            auto socket = _socket.lock();
+            socket->shutdown();
+        }
+        catch(const std::exception &e)
+        {
+            std::cout<< "Force shutdown socket in module\n";
+        }
         exit_application = true;
     }
     else
