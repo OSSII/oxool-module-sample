@@ -30,8 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">插入的文字
-                        <input name="message" value="Hello World" type="text" class="form-control"
-                            id="message">
+                        <input name="message" value="Hello World" type="text" class="form-control" id="message">
                     </label>
                 </div>
                 <div class="form-group">
@@ -132,11 +131,11 @@
             }
             configSocket.setConfig(JSON.stringify(json));
         });
-        
+
         $('form').submit(function (e) {
             e.preventDefault();
         });
-        
+
         $('#test_form_submit').click(function () {
             var test_url = window.location.protocol + "//" + window.location.host + `/lool/sample`;
             var fData = new FormData(document.getElementById("test_form"));
@@ -177,7 +176,7 @@
                 document.body.appendChild(a)
                 a.click()
                 a.remove()
-               
+
             }).error(function (jqXHR, error, errorThrown) {
                 alert("伺服器錯誤");
             });
@@ -197,6 +196,8 @@
                 $('.nav-tabs a[href="#a1"]').tab('show');
             }
             else {
+                if (Number(tabid.replace("#a", "")) > $(".tabctl").length)
+                    tabid = '#a1';
                 $('.nav-tabs a[href="' + tabid + '"]').tab('show');
             }
         }
